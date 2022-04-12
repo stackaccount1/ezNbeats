@@ -12,4 +12,5 @@ Nbeats.run_prediction_and_plot('ethdata.csv')
 
 Returns:
 
+![readmeethdata](https://user-images.githubusercontent.com/61128114/163050549-daa91a46-4953-4a3d-8fc1-8f89034ce7fc.png)
 
