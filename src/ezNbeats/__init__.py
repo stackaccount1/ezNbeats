@@ -53,3 +53,15 @@ def run_prediction_and_plot(ethdata):
     dr.head()
     plt.plot(df["Price"],label='Price History')
     plt.plot(dr["Date"], dr["Price_Prediction"])
+
+def return_prediction(ethdata):
+    data = pd.read_csv(ethdata)   
+    data = data.values        #univariate time series data of shape nx1 (numpy array)
+    print(len(data))
+    data_for_chart = data.tolist()
+    data_for_chart = [val for sublist in data_for_chart for val in sublist]
+    model = NBeats(data=data, period_to_forecast=70)
+    model.fit()
+    forecast = model.predict()
+    print(len(forecast))
+    return forecast
