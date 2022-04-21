@@ -12,12 +12,15 @@ from scipy import stats
 from sklearn.preprocessing import MinMaxScaler
 
 
-def process_data_return_prediction(ethdata):
+def process_data_return_prediction(ethdata, period):
     data = pd.read_csv(ethdata)   
     data = data.values        #univariate time series data of shape nx1 (numpy array)
+    print("Data size is:", len(data))
+    assert len(data) >= 50, 'Data set must be over 50'
+    assert (period/len(data)) <= .25, 'Prediction period must be less than 25% of the data set'
     data_for_chart = data.tolist()
     data_for_chart = [val for sublist in data_for_chart for val in sublist]
-    model = NBeats(data=data, period_to_forecast=70)
+    model = NBeats(data=data, period_to_forecast=period)
     model.fit()
     forecast = model.predict()
     return forecast, data, data_for_chart
@@ -30,9 +33,8 @@ def makexvalueforlist(data):
         x_list.append(j)
     return x_list
 
-#x_list = makexvalueforlist(data)
-
 def makexvalueforpredictionvalues(list1, array_predicted):
+    #x_list = makexvalueforlist(list1)
     x_pred_list = []
     j = makexvalueforlist(list1)[-1]
     #print(j)
@@ -42,8 +44,8 @@ def makexvalueforpredictionvalues(list1, array_predicted):
     #print(x_pred_list)
     return x_pred_list
 
-def run_prediction_and_plot(ethdata):
-    forecast, data, data_for_chart = process_data_return_prediction(ethdata)
+def run_prediction_and_plot(ethdata, period):
+    forecast, data, data_for_chart = process_data_return_prediction(ethdata, period)
     x_list = makexvalueforlist(data)
     x_pred_list = makexvalueforpredictionvalues(data, forecast)
     forecast = forecast.reshape(len(forecast))
@@ -54,12 +56,6 @@ def run_prediction_and_plot(ethdata):
     plt.plot(df["Price"],label='Price History')
     plt.plot(dr["Date"], dr["Price_Prediction"])
 
-def return_prediction(ethdata):
-    data = pd.read_csv(ethdata)   
-    data = data.values        #univariate time series data of shape nx1 (numpy array)
-    data_for_chart = data.tolist()
-    data_for_chart = [val for sublist in data_for_chart for val in sublist]
-    model = NBeats(data=data, period_to_forecast=70)
-    model.fit()
-    forecast = model.predict()
+def return_prediction(ethdata, period):
+    forecast, data, data_for_chart = process_data_return_prediction(ethdata, period)
     return forecast
