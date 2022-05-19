@@ -34,8 +34,7 @@ setup(name='ezNbeats',
           'six',
           'sklearn', 
           'threadpoolctl',
-          'torchvision',
-          'torch',],
+          'torchvision',],
       zip_safe=False)
       
      
