@@ -33,8 +33,7 @@ setup(name='ezNbeats',
           'scipy',
           'six',
           'sklearn', 
-          'threadpoolctl',
-          'torchvision',],
+          'threadpoolctl',],
       zip_safe=False)
       
      
