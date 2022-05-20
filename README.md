@@ -8,7 +8,7 @@ Download directions are at the bottom of the page
 ```
 import ezNbeats as Nbeats
 
-Nbeats.run_prediction_and_plot('ethdata.csv')
+Nbeats.run_prediction_and_plot('ethdata.csv', 'period_prediction_in_integer_value')
 
 ```
 
@@ -17,10 +17,10 @@ Returns:
 ![readmeethdata](https://user-images.githubusercontent.com/61128114/163050549-daa91a46-4953-4a3d-8fc1-8f89034ce7fc.png)
 
 
-## Return Prediction Values *data must be larger than 500 csv rows, smaller data function below if needed*
+## Return Prediction Values
 
 ```
-Nbeats.run_prediction('ethdata.csv')
+Nbeats.return_prediction('ethdata.csv', 'period_prediction_in_integer_value')
 ```
 
 Returns:
@@ -98,9 +98,6 @@ array([[4533.275 ],
        [6342.4746]], dtype=float32)
 ```
 
-## Run Predicition on small data set *Must be larger than 46 csv rows, prediction period must be larger than 25% of the data passed*
-
-
 
 ## Download Instructions
 
@@ -109,3 +106,7 @@ Cd into repo in terminal
 `pip3 install .`
 in python file:
 `import ezNbeats as Nbeats`
+
+dependencies are tough as pytorch, sci libraries, and nbeats_forecast all require different versions of numpy and etc. Recommended install in a venv, and add dependecies one by one, finally install nbeats_forecast as *pip3 install nbeats_forecast --no-cache-dir*
+
+Contact me if you have issues downloading
