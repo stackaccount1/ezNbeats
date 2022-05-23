@@ -1,12 +1,12 @@
 # ezNbeats
-## keras style wrapper for N_Beats libraries, plot prediction data, get prediction data simply and on small data sets, better errors and guardrails
+## keras style wrapper for N_Beats time series prediction model library, plot prediction data, get prediction data, improved errors and guardrails for simple prediction use.
 
 Download directions are at the bottom of the page
 
 ## Plotting Function
 
 ```
-import ezNbeats as Nbeats
+import ezNbeats as Nbeats 
 
 Nbeats.run_prediction_and_plot('ethdata.csv', 'period_prediction_in_integer_value')
 
